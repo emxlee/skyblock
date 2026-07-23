@@ -68,4 +68,11 @@ public class OneBlockManager {
     }
 
     public String currentPhaseName(Island island) {
-        if (phases.isEmpty())
+        if (phases.isEmpty()) return "Overworld";
+        int index = Math.min(island.getOneBlockPhaseIndex(), phases.size() - 1);
+        return phases.get(index).name();
+    }
+
+    private record Phase(String name, List<Material> blocks) {
+    }
+}
