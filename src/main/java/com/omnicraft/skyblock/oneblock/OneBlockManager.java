@@ -27,7 +27,8 @@ public class OneBlockManager {
         List<Map<?, ?>> rawPhases = plugin.getConfig().getMapList("oneblock.phases");
 
         for (Map<?, ?> map : rawPhases) {
-            String name = String.valueOf(map.getOrDefault("name", "Phase"));
+            Object nameObj = map.get("name");
+            String name = nameObj != null ? String.valueOf(nameObj) : "Phase";
             Object blocksObj = map.get("blocks");
             if (!(blocksObj instanceof List<?> blockNames)) continue;
 
@@ -67,11 +68,4 @@ public class OneBlockManager {
     }
 
     public String currentPhaseName(Island island) {
-        if (phases.isEmpty()) return "Overworld";
-        int index = Math.min(island.getOneBlockPhaseIndex(), phases.size() - 1);
-        return phases.get(index).name();
-    }
-
-    private record Phase(String name, List<Material> blocks) {
-    }
-}
+        if (phases.isEmpty())
