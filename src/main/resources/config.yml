@@ -1,0 +1,62 @@
+# Omnicraft Skyblock configuration
+
+world:
+  standard-name: skyblock_world
+  oneblock-name: skyblock_oneblock
+  # If true and the world doesn't exist yet, the plugin creates it itself
+  # with its own void generator. Set to false if you'd rather pre-create
+  # the world yourself (e.g. via Multiverse's /mv create ... --generator
+  # OmnicraftSkyblock so it shows up in Multiverse's world list/portals).
+  auto-create: true
+  sea-level: 64
+
+island:
+  spacing: 200          # distance between island centers, in blocks
+  size: 100             # protected radius around island center, in blocks
+  home-y: 65
+
+oneblock:
+  # Simple phase system: after breaking `blocks-per-phase` one-blocks, the
+  # pool of possible next blocks advances to the next phase.
+  blocks-per-phase: 50
+  phases:
+    - name: "Overworld"
+      blocks: [DIRT, DIRT, DIRT, STONE, COAL_ORE, OAK_LOG, GRAVEL]
+    - name: "Caves"
+      blocks: [STONE, ANDESITE, IRON_ORE, COPPER_ORE, GRAVEL, DIRT]
+    - name: "Desert"
+      blocks: [SAND, SANDSTONE, GOLD_ORE, DEAD_BUSH, CACTUS]
+    - name: "Ocean"
+      blocks: [WATER, SAND, PRISMARINE, KELP, TROPICAL_FISH_BUCKET]
+
+gui:
+  title: "<gradient:#FF6EC7:#7DF9FF>Choose Your Island</gradient>"
+  # Gradient tags above are parsed by our own lightweight gradient parser
+  # (util.GradientUtil) -- no MiniMessage dependency required.
+  rows: 3
+
+sounds:
+  click: UI_BUTTON_CLICK
+  select: ENTITY_PLAYER_LEVELUP
+  deny: ENTITY_VILLAGER_NO
+  create: ENTITY_PLAYER_LEVELUP
+  volume: 1.0
+  pitch: 1.0
+
+spawn:
+  # World spawn used when players first enter skyblock before picking/owning
+  # an island. Set via /sba spawn set. Stored here so it persists.
+  world: ""
+  x: 0.5
+  y: 65.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0
+  particle:
+    enabled: true
+    type: END_ROD
+    count: 6
+    interval-ticks: 20
+
+storage:
+  autosave-interval-minutes: 5

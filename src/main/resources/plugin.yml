@@ -1,0 +1,46 @@
+name: OmnicraftSkyblock
+version: '${project.version}'
+main: com.omnicraft.skyblock.SkyblockPlugin
+api-version: '1.21'
+author: Emiree
+description: Standalone Skyblock plugin for Omnicraft with GUI island picker, blueprints, and OneBlock
+
+softdepend: [WorldEdit, FastAsyncWorldEdit, Multiverse-Core, PlayerParticles, PlaceholderAPI]
+
+commands:
+  sb:
+    description: Player skyblock menu and island management
+    usage: /sb <create|home|delete|trust|untrust|settings>
+    aliases: [skyblock, island, is]
+  sba:
+    description: Skyblock admin commands
+    usage: /sba <reload|blueprint|spawn|tp|delete>
+    aliases: [skyblockadmin]
+
+permissions:
+  skyblock.use:
+    description: Base permission to use /sb
+    default: true
+  skyblock.island.create:
+    default: true
+  skyblock.island.trust:
+    default: true
+  skyblock.island.settings:
+    default: true
+  skyblock.admin:
+    description: Access to /sba admin commands
+    default: op
+  skyblock.admin.blueprint:
+    default: op
+  skyblock.admin.spawn:
+    default: op
+  skyblock.admin.reload:
+    default: op
+  skyblock.admin.teleport:
+    default: op
+  skyblock.admin.delete:
+    default: op
+  # Per-blueprint gating: grant skyblock.blueprint.<id> to a LuckPerms group
+  # (e.g. donor ranks) to unlock specific starting islands in the GUI.
+  skyblock.blueprint.*:
+    default: true

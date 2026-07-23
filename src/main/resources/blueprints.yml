@@ -1,0 +1,39 @@
+# Island blueprints available in the /sb selection GUI.
+# type: STANDARD  -> pastes the given schematic via WorldEdit/FAWE
+# type: ONEBLOCK  -> ignores schematic, spawns a single platform block that
+#                    regenerates per the oneblock phase table in config.yml
+#
+# gradient-start / gradient-end are hex colors (no #) applied across the
+# display name text in the GUI.
+#
+# Put your own .schem files in plugins/OmnicraftSkyblock/blueprints/ and
+# either add an entry here manually, or use:
+#   /sba blueprint capture <id> <displayName> <icon>
+# while standing with an active WorldEdit selection to generate one.
+
+blueprints:
+  standard:
+    type: STANDARD
+    display-name: "Standard Skyblock"
+    gradient-start: "FF6EC7"
+    gradient-end: "7DF9FF"
+    icon: GRASS_BLOCK
+    schematic: standard.schem
+    lore:
+      - "The classic skyblock start."
+      - "A small floating island with"
+      - "a tree and a chest of supplies."
+    slot: 11
+
+  oneblock:
+    type: ONEBLOCK
+    display-name: "OneBlock"
+    gradient-start: "7DF9FF"
+    gradient-end: "FF6EC7"
+    icon: GRASS_BLOCK
+    schematic: ""
+    lore:
+      - "Break the block, get a new one."
+      - "Progress through phases as you"
+      - "break your way to new loot."
+    slot: 15
